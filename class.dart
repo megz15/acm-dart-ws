@@ -54,11 +54,10 @@ classFields() {
 // like arguments to a function when initializing an Object
 
 // This is where a Constructor comes in. Constructors are
-// functions that runs when an Object is initialized
+// functions that runs when an Object is initialized.
 
-// For passing data into a class, you'd define a function with the
-// same name as your class, then add `this.field` to reference a
-// positional argument passed to the constructor
+// Define a function with the same name as your class,
+// then add `this.field` to reference a positional argument
 
 class MusicBand {
   String name;
@@ -82,7 +81,32 @@ classConstructor() {
   """);
 }
 
+// [4] === Methods === [4] \\
+
+// This is another type of instance member. These are funtions
+// that are a part of each individual Object. The function has
+// access to any instance variables of the Class, that is, the
+// method will have access to the current state of the Object.
+
+class Person {
+  String name;
+  int age;
+
+  Person(this.name, this.age);
+
+  isAdult() {
+    return age>=18;
+  }
+}
+
+Person megz = Person("Meghraj Goswami", 18);
+
+classMethod() {
+  print("The person ${megz.name} is ${megz.isAdult() ? "" : "not "}an adult.");
+}
+
 main() {
   classFields(); //2
   classConstructor(); //3
+  classMethod(); //4
 }
