@@ -43,8 +43,8 @@ classFields() {
   print("""
     Daft Punk was formed in ${daftPunkObject.formationYear}.
     Their debut album was ${daftPunkObject.debutAlbum}.
-    It is ${daftPunkObject.wasBestBand} that they were one of the
-    best duos in the field of electronic music.
+    It is ${daftPunkObject.wasBestBand} that they were one of the best
+    duos in the field of electronic music.
   """);
 }
 
@@ -97,16 +97,60 @@ class Person {
   isAdult() {
     return age>=18;
   }
+
+  modifyAgeBy(int n) {
+    age += n;
+  }
 }
 
-Person megz = Person("Meghraj Goswami", 18);
+Person megz = Person("Meghraj", 18);
 
 classMethod() {
-  print("The person ${megz.name} is ${megz.isAdult() ? "" : "not "}an adult.");
+  print("""
+    The person ${megz.name} is ${megz.isAdult() ? "" : "not "}an adult.
+  """);
+
+  megz.modifyAgeBy(51);
+
+  print("""
+    ${megz.name} took a little maneuver that costed them 51 years.
+    They are now ${megz.age} years old.
+  """);
 }
+
+// [5] === Static Variables and Methods === [5] \\
+
+// Adding the `static` keyword to variable and function definitions
+// associate them with the Class itself, making them global rather
+// than being specific to individual Object instances.
+
+// The malloc for static vars happen only once at the time of initialization.
+
+// A static method is only allowed to access static vars of the Class,
+// and are usually used as utility methods for organization and
+// encapsulation of functionality.
+
+class MathUtils {
+
+  static int ten = 10;
+
+  static factorial(n) {
+    return (n<=1) ? 1 : n * factorial(n-1);
+  }
+
+}
+
+classStatic() {
+  print("""
+    The factorial of ${MathUtils.ten} is ${MathUtils.factorial(MathUtils.ten)}
+  """);
+}
+
+
 
 main() {
   classFields(); //2
   classConstructor(); //3
   classMethod(); //4
+  classStatic(); //5
 }
